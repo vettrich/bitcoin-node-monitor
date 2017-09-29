@@ -1,0 +1,5 @@
+{
+  "mountPath": "/mnt/raid0",
+  "nodeAddress": "127.0.0.1",
+  "nodePort": 8332
+}
