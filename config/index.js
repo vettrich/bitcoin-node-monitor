@@ -1,9 +1,9 @@
 let config = require('./default.json');
-const envConfig = require('./env.json');
+const fs = require('fs');
 
-const env = process.env.NODE_ENV || 'development';
-
-if (env === 'development') {
+const envConfigPath = 'config/env.json';
+if (fs.existsSync(envConfigPath)) {
+  const envConfig = JSON.parse(fs.readFileSync(envConfigPath, 'utf8'));
   config = Object.assign({}, config, envConfig);
 }
 
