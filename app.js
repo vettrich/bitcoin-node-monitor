@@ -5,7 +5,6 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-const routeIndex = require('./routes/index');
 const routeInfo = require('./routes/info');
 const routeSystem = require('./routes/system');
 const debug = require('debug')('app:init');
@@ -24,7 +23,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routeIndex);
+// serve client html build as index
+app.use(express.static(path.join(__dirname, 'client', 'build')));
+
+// serve API URLs
 app.use('/info', routeInfo);
 app.use('/system', routeSystem);
 

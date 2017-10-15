@@ -6,6 +6,7 @@
     "bytes": "^3.0.0",
     "install": "^0.10.1",
     "ms": "^2.0.0",
+    "node-fetch": "^1.7.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-scripts": "1.0.14"
