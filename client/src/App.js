@@ -1,3 +1,4 @@
+import './polyfills';
 import React, { Component } from 'react';
 import fetch from 'node-fetch';
 import bytes from 'bytes';

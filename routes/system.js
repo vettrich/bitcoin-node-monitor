@@ -6,6 +6,8 @@ const si = require('systeminformation');
 const disk = require('diskusage');
 const promisify = require('util.promisify');
 const debug = require('debug')('app:system');
+
+const errorHandler = require('./errorHandler');
 const config = require('../config');
 
 const diskCheckPromise = promisify(disk.check);
@@ -33,13 +35,7 @@ router.get('/', (req, res /* , next */) => {
     .then(([promiseCurrentLoadResult, promiseDiskCheckResult]) => {
       res.json(Object.assign({}, data, promiseCurrentLoadResult, promiseDiskCheckResult));
     })
-    .catch((err) => {
-      debug('ERROR: ', err);
-      res.json({
-        success: false,
-        error: err,
-      });
-    });
+    .catch(err => errorHandler(res, err));
 });
 
 module.exports = router;

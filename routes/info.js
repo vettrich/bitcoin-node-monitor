@@ -1,8 +1,10 @@
 const express = require('express');
 const Client = require('bitcoin-core');
 
-const router = express.Router();
+const errorHandler = require('./errorHandler');
 const config = require('../config');
+
+const router = express.Router();
 
 /* GET info listing. */
 router.get('/', function(req, res, next) {
@@ -18,9 +20,7 @@ router.get('/', function(req, res, next) {
 
   client.getBlockchainInformation().then((info) => {
     res.json(info);
-  }) /* .error((error, req) => {
-      console.log('error: ',error, req);
-  }) */;
+  }).error(err => errorHandler(res, err));
 
   // And insert something like this instead:
   /* res.json([{
