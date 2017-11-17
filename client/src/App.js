@@ -104,9 +104,6 @@ class App extends Component {
             <span>{handleEmpty(bytes(this.state.system.diskUsed))}</span> / <span>{handleEmpty(bytes(this.state.system.diskTotal))}</span>
           </div>
         </section>
-        {/*{this.state.users.map(user =>
-          <div key={user.id}>{user.username}</div>
-        )}*/}
       </div>
     );
   }
